@@ -1,7 +1,10 @@
-import React, { useRef } from 'react';
+
+import React, { useRef,useState } from 'react';
 import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
+import FormPopup from '../components/form';
+
 
 
 
@@ -12,7 +15,13 @@ import { urlFor } from '../lib/client';
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
-
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const handleButtonClick = () => {
+    setIsPopupOpen(true);
+  };
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
  
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -80,12 +89,14 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type="button" className="btn" >
-                Pay with espe
+              <button type="button" className="btn" onClick={handleButtonClick} >
+                Pay with espece
               </button>
+              {isPopupOpen && <FormPopup isopen={isPopupOpen} handleclickclose={handleClosePopup} />}
             </div>
           </div>
         )}
+          
       </div>
     </div>
   )
