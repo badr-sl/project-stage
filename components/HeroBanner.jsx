@@ -4,17 +4,16 @@ import Link from 'next/link';
 import { urlFor } from '../lib/client';
 
 const HeroBanner = ({ heroBanner }) => {
-  const imagePath = 'https://o.remove.bg/downloads/ea446e93-89c1-4bc2-afd8-e01fec20c9d8/image_2023-07-19_210321690-removebg-preview.png';
   return (
     <div className="hero-banner-container">
       <div>
         <p className="beats-solo">{heroBanner.smallText}</p>
         <h3>{heroBanner.midText}</h3>
-        <h1>AirPods Max</h1>
+        <h1>{heroBanner.largeText1}</h1>
         <img src={urlFor(heroBanner.image)} alt="headphones" className="hero-banner-image" />
 
         <div>
-          <Link href={`/product/${heroBanner.product}`}>
+          <Link href={`product/airpods-max`}>
             <button type="button">{heroBanner.buttonText}</button>
           </Link>
           <div className="desc">
@@ -27,4 +26,4 @@ const HeroBanner = ({ heroBanner }) => {
   )
 }
 
-export default HeroBanner;
+export default HeroBanner

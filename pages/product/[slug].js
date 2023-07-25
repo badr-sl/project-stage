@@ -9,9 +9,6 @@ const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
-  const imagePath = 'https://o.remove.bg/downloads/ea446e93-89c1-4bc2-afd8-e01fec20c9d8/image_2023-07-19_210321690-removebg-preview.png';
-
-
   const handleBuyNow = () => {
     onAdd(product, qty);
 

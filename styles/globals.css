@@ -168,10 +168,9 @@ width: 100%;
 }
 .hero-banner-image{
   position: absolute;
-  top: 0%;
-  right:13%;
-  
-  height: 450px;
+  top: -11%;
+  right: 2%;
+  height: 109%;
 }
 
 
@@ -249,10 +248,9 @@ text-align: end;
 }
 .footer-banner-image{
   position: absolute;
-  /* top: -35%;
-  left: 8%; */
-  top: -25%;
-  left: 30%;
+    top: -26%;
+    left: 13%;
+    width: 73%;
 }
 .banner-desc .right{
   line-height: 1.4;
