@@ -2,7 +2,8 @@ import { useState } from 'react';
 import React from 'react';
 import SuccessPopup from './SuccessPopup';
 import { useStateContext } from '../context/StateContext';
-import client from '../lib/client' ; 
+import client from '../lib/client'
+
 
 export default function FormPopup(props) {
   const [nom, setNom] = useState('');
@@ -11,8 +12,18 @@ export default function FormPopup(props) {
   const [adresseLocal, setAdresseLocal] = useState('');
   const [ setErrorMessage] = useState('');
   const { totalPrice } = useStateContext();
+  const { cartItems } = useStateContext();
   
-
+  const itemListSanityFormat = cartItems.map(item => (
+    {
+     
+    _type: 'item', // Assurez-vous d'avoir un type "item" défini dans votre schéma
+    _key: item._id,
+    productQte:item.quantity,
+    productName: item.name,
+    productPrice: item.price,
+  }));
+  
 
   const villesMaroc = [
     'Casablanca',
@@ -43,14 +54,12 @@ export default function FormPopup(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    console.log(itemListSanityFormat);
 
     // Vérifiez que tous les champs du formulaire sont remplis avant d'envoyer les données
     if (nom && ville && email && adresseLocal) {
       try {
-        setNom('');
-        setVille('');
-        setEmail('');
-        setAdresseLocal('');
         // Utilisez le client Sanity pour envoyer les données du formulaire
         await client.create({
           _type: 'formulaire', 
@@ -58,8 +67,10 @@ export default function FormPopup(props) {
           ville: ville,
           email: email,
           adresseLocal: adresseLocal,
+          total:totalPrice,
+          items:itemListSanityFormat
         });
-
+        
         // Réinitialisez les champs du formulaire après l'envoi des données
         setNom('');
         setVille('');

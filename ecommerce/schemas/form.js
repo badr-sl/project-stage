@@ -1,4 +1,3 @@
-// schemas/schema.js
 
 export default {
   name: 'formulaire',
@@ -7,23 +6,58 @@ export default {
   fields: [
     {
       name: 'nom',
-      title: 'Nom',
+      title: 'Nom :',
       type: 'string',
     },
     {
       name: 'ville',
-      title: 'Ville',
+      title: 'Ville :',
       type: 'string',
     },
     {
       name: 'email',
-      title: 'E-mail',
+      title: 'E-mail :',
       type: 'string',
     },
     {
       name: 'adresseLocal',
-      title: 'Adresse',
+      title: 'Adresse :',
       type: 'text',
+    },
+    {
+      name: 'total',
+      title: 'Prix Total :',
+      type: 'number',
+    },
+    {
+      name: 'items',
+      title: 'Liste des produits :', // Field title for the product list
+      type: 'array', // Use the array type to store multiple products
+      of: [
+        {
+          type: 'object',
+          name:'item',
+          fields: [
+            {
+              name: 'productName',
+              title: 'Product Name :',
+              type: 'string',
+            },
+            {
+              name: 'productQte',
+              title: 'Product Qte :',
+              type: 'number',
+            },
+           
+            {
+              name: 'productPrice',
+              title: 'Product Price :',
+              type: 'number',
+            },
+            // Add more fields for other product properties as needed
+          ],
+        },
+      ],
     },
   ],
 };

@@ -227,6 +227,7 @@ text-align: end;
   justify-content: space-between;
 }
 .banner-desc button{
+  margin-left: 53%;
   border-radius: 15px;
   padding: 10px 16px;
   background-color: white;
